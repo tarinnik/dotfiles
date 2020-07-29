@@ -21,10 +21,15 @@ else:
 subprocess.call(["youtube-dl", "-f", "bestaudio", "-i", "-o", "~/tmpmusic/%(title)s.%(ext)s", url])
 
 os.chdir("/home/thomas/tmpmusic")
-tmpfile = os.listdir()[0]
+try:
+    tmpfile = os.listdir()[0]
+except IndexError:
+    print("Unable to download the file")
+    quit()
+
 song_name = tmpfile[0:tmpfile.rfind('.')]
 
-if end == None:
+if end is None:
     subprocess.call(["ffmpeg","-ss", str(start), "-i", tmpfile, "/home/thomas/Music/" + song_name + ".mp3"])
 else:
     subprocess.call(["ffmpeg","-ss", str(start), "-t", str(end), "-i", tmpfile, "/home/thomas/Music/" + song_name + ".mp3"])
