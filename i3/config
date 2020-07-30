@@ -1,0 +1,285 @@
+# -------
+
+# i3 config file (v4)
+
+# General settings
+set $mod1 Mod4
+set $mod2 Mod1
+
+set $left h
+set $down j
+set $up k
+set $right l
+
+floating_modifier $mod1
+
+# Fonts
+font pango:Clear Sans 10
+
+####### Navigation #######
+bindsym $mod1+$left focus left
+bindsym $mod1+$right focus right
+bindsym $mod1+$up focus up
+bindsym $mod1+$down focus down
+
+bindsym $mod1+Left focus left
+bindsym $mod1+Right focus right
+bindsym $mod1+Up focus up
+bindsym $mod1+Down focus down
+
+bindsym $mod1+Shift+$left move left
+bindsym $mod1+Shift+$right move right
+bindsym $mod1+Shift+$up move up
+bindsym $mod1+Shift+$down move down
+
+bindsym $mod1+Shift+Left move left
+bindsym $mod1+Shift+Right move right
+bindsym $mod1+Shift+Up move up
+bindsym $mod1+Shift+Down move down
+
+# Resizing
+bindsym $mod2+h resize shrink width 10 px or 10 ppt
+bindsym $mod2+j resize grow height 10 px or 10 ppt
+bindsym $mod2+k resize shrink height 10 px or 10 ppt
+bindsym $mod2+l resize grow width 10 px or 10 ppt
+
+# General navigation
+bindsym $mod1+c split h
+bindsym $mod1+v split v
+
+bindsym $mod1+f fullscreen toggle
+
+bindsym $mod1+Shift+space floating toggle
+bindsym $mod1+space focus mode_toggle
+
+bindsym $mod1+a focus parent
+focus_follows_mouse yes
+
+####### KEYBINDS #######
+
+set $terminal gnome-terminal
+set $shutdown shutdown now
+set $reboot reboot
+set $exit i3-msg exit
+
+bindsym $mod1+Return exec $terminal
+bindsym $mod1+Shift+Return exec ~/.config/i3/dmenu.conf
+
+#bindsym $mod1+a focus parent
+#bindsym $mod1+Shift+a
+
+#bindsym $mod1+b
+#bindsym $mod1+Shift+b
+
+#bindsym $mod1+c
+bindsym $mod1+Shift+c reload
+
+#bindsym $mod1+d
+#bindsym $mod1+Shift+d
+
+#bindsym $mod1+e
+#bindsym $mod1+Shift+e
+
+#bindsym $mod1+f
+#bindsym $mod1+Shift+f
+
+#bindsym $mod1+g enable gaps
+#bindsym $mod1+Shift+g disable gaps
+
+#bindsym $mod1+h
+#bindsym $mod1+Shift+h
+
+#bindsym $mod1+i
+#bindsym $mod1+Shift+i
+
+#bindsym $mod1+j
+#bindsym $mod1+Shift+j
+
+#bindsym $mod1+k
+#bindsym $mod1+Shift+k
+
+#bindsym $mod1+l
+#bindsym $mod1+Shift+l
+
+#bindsym $mod1+m
+#bindsym $mod1+Shift+m
+
+#bindsym $mod1+n
+#bindsym $mod1+Shift+n
+
+#bindsym $mod1+o
+#bindsym $mod1+Shift+o
+
+#bindsym $mod1+p
+#bindsym $mod1+Shift+p
+
+#bindsym $mod1+q
+bindsym $mod1+Shift+q kill
+
+bindsym $mod2+r exec $terminal -e ranger
+bindsym $mod1+r exec nautilus
+bindsym $mod1+Shift+r restart
+
+bindsym $mod1+s exec scrot -s
+#bindsym $mod1+Shift+s
+
+#bindsym $mod1+t
+#bindsym $mod1+Shift+t
+
+#bindsym $mod1+u
+#bindsym $mod1+Shift+u
+
+#bindsym $mod1+v
+#bindsym $mod1+Shift+v
+
+bindsym $mod1+w exec firefox
+bindsym $mod1+Shift+w exec /home/thomas/programs/joplin
+
+bindsym $mod1+x exec i3lock -c 000000 -f -e
+#bindsym $mod1+x exec i3lock -i ~/Pictures/test.jpg -t -f -e
+bindsym $mod1+Shift+x exec ~/.scripts/prompt "Shutdown computer?" "$shutdown"
+
+#bindsym $mod1+y
+#bindsym $mod1+Shift+y
+
+bindsym $mod1+z exec ~/.scripts/prompt "Exit i3?" "$exit"
+bindsym $mod1+Shift+z exec ~/.scripts/prompt "Reboot computer?" "$reboot"
+
+# Audio Controls
+bindsym XF86AudioPlay exec playerctl -p rhythmbox play-pause
+bindsym $mod1+XF86AudioPlay exec playerctl -p rhythmbox previous
+bindsym $mod1+XF86AudioMute exec playerctl -p rhythmbox next
+
+bindsym $mod1+Shift+XF86AudioPlay exec rhythmbox
+#; for_window [class="Rhythmbox"] move to workspace $ws10
+
+# System volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%-
+bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle-mute
+
+# Music Volume
+bindsym $mod1+XF86AudioRaiseVolume exec playerctl -p rhythmbox volume 0.05+
+bindsym $mod1+XF86AudioLowerVolume exec playerctl -p rhythmbox volume 0.05-
+
+# Firefox Volume
+bindsym $mod2+XF86AudioRaiseVolume exec playerctl -p plasma-browser-integration volume 0.05+
+bindsym $mod2+XF86AudioLowerVolume exec playerctl -p plasma-browser-integration volume 0.05-
+
+# Pause Firefox Content
+bindsym $mod2+XF86AudioPlay exec playerctl -p plasma-browser-integration play-pause
+
+
+bindsym Print exec scrot -q 100
+
+
+####### Workspaces #######
+set $ws1 "1.   "
+set $ws2 "2.   "
+set $ws3 "3.   "
+set $ws4 "4.   "
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7    "
+set $ws8 "8.   "
+set $ws9 "9.   "
+set $ws10 "10"
+
+bindsym $mod1+1 workspace $ws1
+bindsym $mod1+2 workspace $ws2
+bindsym $mod1+3 workspace $ws3
+bindsym $mod1+4 workspace $ws4
+bindsym $mod1+5 workspace $ws5
+bindsym $mod1+6 workspace $ws6
+bindsym $mod1+7 workspace $ws7
+bindsym $mod1+8 workspace $ws8
+bindsym $mod1+9 workspace $ws9
+bindsym $mod1+0 workspace $ws10
+
+bindsym $mod1+Shift+1 move container to workspace $ws1
+bindsym $mod1+Shift+2 move container to workspace $ws2
+bindsym $mod1+Shift+3 move container to workspace $ws3
+bindsym $mod1+Shift+4 move container to workspace $ws4
+bindsym $mod1+Shift+5 move container to workspace $ws5
+bindsym $mod1+Shift+6 move container to workspace $ws6
+bindsym $mod1+Shift+7 move container to workspace $ws7
+bindsym $mod1+Shift+8 move container to workspace $ws8
+bindsym $mod1+Shift+9 move container to workspace $ws9
+bindsym $mod1+Shift+0 move container to workspace $ws10
+
+#Workspace Assignments
+workspace $ws1 output $m1
+workspace $ws2 output $m2
+
+#assign [class="Firefox"] $ws1
+#assign [class="kitty"] $ws2
+assign [class="Steam"] $ws7
+assign [class="(?i)KeepassXC"] $ws8
+assign [class="Signal"] $ws9
+assign [class="Rhythmbox"] $ws10
+
+
+# Monitors
+set $m1 "HDMI-0"
+set $m2 "DVI-D-0"
+
+bindsym $mod2+Shift+1 move workspace to output $m1
+bindsym $mod2+Shift+2 move workspace to output $m2
+
+####### Colours #######
+#type			border	backgr.	text	indictr	child_border
+client.focused		#61d4c8	#61d4c8	#232828	#61d4c8	#61d4c8
+client.focused_inactive	#40726d	#40726d	#232828	#40726d	#40726d
+client.unfocused	#40726d	#40726d	#232828	#40726d	#40726d
+client.urgent		#ff5757	#ff5757	#232828	#ff5757	#ff5757
+client.background	#232828
+
+
+
+####### Gaps Integration #######
+for_window [class="^.*"] border pixel 1
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [title="Preferences$"] floating enable
+
+gaps inner 5
+gaps outer 0
+
+bindsym $mod1+g gaps inner all set 10
+bindsym $mod1+Shift+g gaps inner all set 0
+
+
+####### Bar #######
+#bar {
+#	status_command i3status
+#	position top
+#	tray_output primary
+#	font pango:Google Sans 10
+#
+#	colors {
+#		background #101218
+#
+#		focused_workspace #61d4c8 #61d4c8 #101218
+#		active_workspace #40726d #40726d #ffffff
+#		inactive_workspace #101218 #101218 #ffffff
+#		urgent_workspace #ff5757 #ff5757 #ffffff
+#	}
+#}
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+
+# Setting things up on launch
+exec --no-startup-id nm-applet
+exec --no-startup-id /usr/lib64/polkic-gnome/polkit-gnome-authentication-agent-1
+exec ~/.config/i3/arandr.sh
+exec_always feh --bg-fill ~/Pictures/wallpaper.png
+exec --no-startup-id xdotool key --clearmodifiers Num_Lock
+
+# Fix screen tearing
+exec --no-startup-id compton --backend glx --vsync opengl-swc
+
+#Start programs on launch
+exec syncthing-gtk -m
+exec kdeconnect-indicator
+exec keepassxc
+#for_window [class="(?i)KeepassXC"] move to workspace $ws8
