@@ -1,0 +1,3 @@
+#!/bin/bash
+
+[ "$(printf "No\\nYes" | dmenu -i -p "$1" -fn "Google Sans" -nb "#101218" -sb "#61d4c8" -sf "#101218" )" = "Yes" ] && $2
