@@ -1,0 +1,86 @@
+"MY VIMRC
+
+"""" Plugins """"
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/goyo.vim'
+Plug 'dracula/vim',{'as':'dracula'}
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'scrooloose/nerdtree'
+"Plug 'bling/vim-bufferline'
+Plug 'ajh17/VimCompletesMe'
+Plug 'udalov/kotlin-vim'
+
+call plug#end()
+
+
+"""" General settings """"
+	let mapleader =" "
+	set nocompatible
+	set number
+	set relativenumber
+	set encoding=utf-8
+"	syntax on
+	set showcmd
+	set autoindent
+	set backupdir-=.
+	set backupdir=~/tmp,/tmp
+
+	set tabstop=4
+	set shiftwidth=4
+
+	autocmd FileType Rmd set spell
+	autocmd FileType ms set spell
+
+"""" Plugin Settings """"
+" Goyo
+	map <leader>g :Goyo<CR>
+
+" vim-airline
+
+" nerdtree
+	map <leader>f :NERDTreeToggle<CR>
+" bufferline
+"	let g:bufferline_echo = 1
+
+
+
+" Enable autocomplete
+	set wildmode=longest,list,full
+" Disable automatic commenting on newline
+	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" Split navigation
+	set splitbelow splitright
+	map <C-h> <C-w>h
+	map <C-j> <C-w>j
+	map <C-k> <C-w>k
+	map <C-l> <C-w>l
+	map <C-p> <C-w>>
+	map <C-u> <C-w><
+	map <C-i> <C-w>-
+	map <C-o> <C-w>+
+
+	map <leader>c :!~/.scripts/compiler % pwd<CR>
+	map <leader>r :!~/.scripts/runner % pwd<CR>
+	map <leader>o :!~/.scripts/opener <c-r>%<CR><CR>
+
+"""" Groff Macros """"
+	autocmd BufRead,BufNewFile *.ms,*.man set filetype=groff
+	autocmd FileType ms inoremap ;b .[ <Return> <++> <Return> .]
+
+" When you type ;< in a php file, it sets out: <> </> and allows you to double tab through
+	autocmd FileType php inoremap ;< <<++>><++></<++>><++>
+
+" When you type ;! in a php file it creates a comment tag
+	autocmd FileType php inoremap ;! <!-- <++> -->
+
+
+	autocmd FileType php inoremap ;/ /* <++> */
+	autocmd FileType css inoremap ;/ /* <++> */
+
+" Remaps Tab Tab to find the break point and move there and delete it
+"	inoremap <Tab><Tab> <Esc>/<++><Enter>"_c4l
+
+	autocmd FileType Rmd inoremap ;& <++> & <++> & <++> & <++> & <++> \\ \hline <++>
