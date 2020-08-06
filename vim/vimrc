@@ -1,5 +1,12 @@
 "MY VIMRC
 
+"""" Auto Install Vim-Plug """"
+if empty(glob('~/.vim/autoload/plug.vim'))
+	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 """" Plugins """"
 call plug#begin('~/.vim/plugged')
 
@@ -10,7 +17,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
 "Plug 'bling/vim-bufferline'
 Plug 'ajh17/VimCompletesMe'
-Plug 'udalov/kotlin-vim'
 
 call plug#end()
 
@@ -29,9 +35,6 @@ call plug#end()
 
 	set tabstop=4
 	set shiftwidth=4
-
-	autocmd FileType Rmd set spell
-	autocmd FileType ms set spell
 
 """" Plugin Settings """"
 " Goyo
@@ -65,22 +68,3 @@ call plug#end()
 	map <leader>c :!~/.scripts/compiler % pwd<CR>
 	map <leader>r :!~/.scripts/runner % pwd<CR>
 	map <leader>o :!~/.scripts/opener <c-r>%<CR><CR>
-
-"""" Groff Macros """"
-	autocmd BufRead,BufNewFile *.ms,*.man set filetype=groff
-	autocmd FileType ms inoremap ;b .[ <Return> <++> <Return> .]
-
-" When you type ;< in a php file, it sets out: <> </> and allows you to double tab through
-	autocmd FileType php inoremap ;< <<++>><++></<++>><++>
-
-" When you type ;! in a php file it creates a comment tag
-	autocmd FileType php inoremap ;! <!-- <++> -->
-
-
-	autocmd FileType php inoremap ;/ /* <++> */
-	autocmd FileType css inoremap ;/ /* <++> */
-
-" Remaps Tab Tab to find the break point and move there and delete it
-"	inoremap <Tab><Tab> <Esc>/<++><Enter>"_c4l
-
-	autocmd FileType Rmd inoremap ;& <++> & <++> & <++> & <++> & <++> \\ \hline <++>
