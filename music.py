@@ -2,6 +2,10 @@ import sys
 import os
 import subprocess
 
+home = "/home/thomas/"
+music = f"{home}Music/"
+tmpmusic = f"{home}tmpmusic/"
+
 if len(sys.argv) > 1:
     url = sys.argv[1]
 else:
@@ -18,17 +22,17 @@ else:
     end = None
 
 if url is not None:
-    subprocess.call(["youtube-dl", "-f", "bestaudio", "-i", "-o", "~/tmpmusic/%(title)s.%(ext)s", url])
+    subprocess.call(["youtube-dl", "-f", "bestaudio", "-i", "-o", f"{tmpmusic}%(title)s.%(ext)s", url])
 
-os.chdir("/home/thomas/tmpmusic")
+os.chdir(f"{tmpmusic}")
 files = os.listdir()
 
 for tmpfile in files:
     song_name = tmpfile[0:tmpfile.rfind('.')]
 
     if end is None:
-        subprocess.call(["ffmpeg","-ss", str(start), "-i", tmpfile, "/home/thomas/Music/" + song_name + ".mp3"])
+        subprocess.call(["ffmpeg","-ss", str(start), "-i", tmpfile, f"{music}" + song_name + ".mp3"])
     else:
-        subprocess.call(["ffmpeg","-ss", str(start), "-t", str(end), "-i", tmpfile, "/home/thomas/Music/" + song_name + ".mp3"])
+        subprocess.call(["ffmpeg","-ss", str(start), "-t", str(end), "-i", tmpfile, f"{music}" + song_name + ".mp3"])
 
     os.remove(tmpfile)
