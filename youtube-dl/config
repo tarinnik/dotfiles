@@ -1,0 +1,12 @@
+# Audio format
+-f bestaudio
+-x --audio-format mp3
+
+# Thumbnail
+#--embed-thumbanil
+
+# Ignore errors
+-i
+
+# Output
+-o ~/Music/%(title)s.%(ext)s
