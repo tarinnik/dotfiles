@@ -120,7 +120,7 @@ bindsym $mod2+r exec $terminal -e ranger
 bindsym $mod1+r exec nautilus
 bindsym $mod1+Shift+r restart
 
-bindsym $mod1+s exec scrot -s
+#bindsym $mod1+s
 #bindsym $mod1+Shift+s
 
 #bindsym $mod1+t
@@ -169,9 +169,8 @@ bindsym $mod2+XF86AudioLowerVolume exec playerctl -p plasma-browser-integration 
 # Pause Firefox Content
 bindsym $mod2+XF86AudioPlay exec playerctl -p plasma-browser-integration play-pause
 
-
-bindsym Print exec scrot -q 100
-
+# Selection screenshot
+bindsym --release Print exec scrot -sf ~/Pictures/screenshots/%y-%m-%d-%H:%M:%S.png
 
 ####### Workspaces #######
 set $ws1 "1.   "
