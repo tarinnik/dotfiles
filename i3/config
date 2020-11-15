@@ -275,7 +275,7 @@ exec_always feh --bg-fill ~/Pictures/wallpaper.png
 exec --no-startup-id xdotool key --clearmodifiers Num_Lock
 
 # Fix screen tearing
-exec --no-startup-id compton --backend glx --vsync opengl-swc
+#exec --no-startup-id compton --backend glx --vsync opengl-swc
 
 #Start programs on launch
 exec syncthing-gtk -m
