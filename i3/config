@@ -137,13 +137,13 @@ bindsym $mod1+Shift+w exec /home/thomas/programs/joplin
 
 bindsym $mod1+x exec i3lock -c 000000 -f -e
 #bindsym $mod1+x exec i3lock -i ~/Pictures/test.jpg -t -f -e
-bindsym $mod1+Shift+x exec ~/.scripts/prompt "Shutdown computer?" "$shutdown"
+bindsym $mod1+Shift+x exec ~/.config/prompt "Shutdown computer?" "$shutdown"
 
 #bindsym $mod1+y
 #bindsym $mod1+Shift+y
 
-bindsym $mod1+z exec ~/.scripts/prompt "Exit i3?" "$exit"
-bindsym $mod1+Shift+z exec ~/.scripts/prompt "Reboot computer?" "$reboot"
+bindsym $mod1+z exec ~/.config/prompt "Exit i3?" "$exit"
+bindsym $mod1+Shift+z exec ~/.config/prompt "Reboot computer?" "$reboot"
 
 # Audio Controls
 bindsym XF86AudioPlay exec playerctl -p rhythmbox play-pause
