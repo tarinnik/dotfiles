@@ -17,6 +17,7 @@
 #### Dependencies
 
 - i3-gaps
+- i3lock
 - feh: wallpaper
 - scrot: screenshot
 - xrandr: set monitors
