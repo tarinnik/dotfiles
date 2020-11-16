@@ -226,12 +226,20 @@ bindsym $mod2+Shift+1 move workspace to output $m1
 bindsym $mod2+Shift+2 move workspace to output $m2
 
 ####### Colours #######
-#type			border	backgr.	text	indictr	child_border
-client.focused		#61d4c8	#61d4c8	#232828	#61d4c8	#61d4c8
-client.focused_inactive	#40726d	#40726d	#232828	#40726d	#40726d
-client.unfocused	#40726d	#40726d	#232828	#40726d	#40726d
-client.urgent		#ff5757	#ff5757	#232828	#ff5757	#ff5757
-client.background	#232828
+#type                   border  backgr.	text    indictr	child_border
+#teal
+#client.focused          #61d4c8 #61d4c8 #232828 #61d4c8 #61d4c8
+#client.focused_inactiv  #40726d #40726d #232828 #40726d #40726d
+#client.unfocused        #40726d #40726d #232828 #40726d #40726d
+#client.urgent           #ff5757 #ff5757 #232828 #ff5757 #ff5757
+#client.background       #232828
+
+#orange
+client.focused          #dd7a3a #dd7a3a #232828 #dd7a3a #dd7a3a
+client.focused_inactive #704427 #704427 #232828 #704427 #704427
+client.unfocused        #704427 #704427 #232828 #704427 #704427
+client.urgent           #ff5757 #ff5757 #232828 #ff5757 #ff5757
+client.background       #232828
 
 
 
