@@ -146,11 +146,12 @@ bindsym $mod1+z exec ~/.config/i3/prompt "Exit i3?" "$exit"
 bindsym $mod1+Shift+z exec ~/.config/i3/prompt "Reboot computer?" "$reboot"
 
 # Audio Controls
-bindsym XF86AudioPlay exec playerctl -p rhythmbox play-pause
-bindsym $mod1+XF86AudioPlay exec playerctl -p rhythmbox previous
-bindsym $mod1+XF86AudioMute exec playerctl -p rhythmbox next
+bindsym XF86AudioPlay exec playerctl -p spotify play-pause
+bindsym $mod1+XF86AudioPlay exec playerctl -p spotify previous
+bindsym $mod1+XF86AudioMute exec playerctl -p spotify next
 
-bindsym $mod1+Shift+XF86AudioPlay exec rhythmbox
+bindsym $mod1+Shift+XF86AudioPlay exec spotify
+#bindsym $mod1+Shift+XF86AudioPlay exec rhythmbox
 #; for_window [class="Rhythmbox"] move to workspace $ws10
 
 # System volume
@@ -159,8 +160,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%
 bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle-mute
 
 # Music Volume
-bindsym $mod1+XF86AudioRaiseVolume exec playerctl -p rhythmbox volume 0.05+
-bindsym $mod1+XF86AudioLowerVolume exec playerctl -p rhythmbox volume 0.05-
+bindsym $mod1+XF86AudioRaiseVolume exec playerctl -p spotify volume 0.05+
+bindsym $mod1+XF86AudioLowerVolume exec playerctl -p spotify volume 0.05-
 
 # Firefox Volume
 bindsym $mod2+XF86AudioRaiseVolume exec playerctl -p plasma-browser-integration volume 0.05+
@@ -209,14 +210,16 @@ bindsym $mod1+Shift+0 move container to workspace $ws10
 #Workspace Assignments
 workspace $ws1 output $m1
 workspace $ws2 output $m2
+workspace $ws10 output $m2
 
 #assign [class="Firefox"] $ws1
 #assign [class="kitty"] $ws2
 assign [class="Steam"] $ws7
-assign [class="(?i)KeepassXC"] $ws8
+#assign [class="(?i)KeepassXC"] $ws8
 assign [class="Signal"] $ws9
-assign [class="Rhythmbox"] $ws10
+#assign [class="Rhythmbox"] $ws10
 
+for_window [class="Spotify"] move to workspace $ws10
 
 # Monitors
 set $m1 "HDMI-0"
@@ -289,4 +292,4 @@ exec --no-startup-id xdotool key --clearmodifiers Num_Lock
 exec syncthing-gtk -m
 exec kdeconnect-indicator
 exec keepassxc
-#for_window [class="(?i)KeepassXC"] move to workspace $ws8
+for_window [class="(?i)KeepassXC"] move to workspace $ws8
