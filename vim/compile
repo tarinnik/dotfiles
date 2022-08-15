@@ -1,0 +1,5 @@
+#!/bin/bash
+
+case "$1" in
+	*.rs) cargo build ;;
+esac
