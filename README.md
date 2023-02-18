@@ -27,6 +27,7 @@
 - dmenu: program launch, prompts
 - [Font Awesome](https://fontawesome.com/v4.7.0/get-started/)
 - font-manager: to install the fonts
+- alsamixer
 
 #### Things to edit
 
@@ -40,6 +41,7 @@
 - install the fonts with font-manager
 - place font awesome.ttf in ~/.fonts/
 - install i3 folder at ~/.config/
+- install polybar folder in ~/.config/
 
 ### Joplin
 
