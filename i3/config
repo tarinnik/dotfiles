@@ -57,7 +57,7 @@ focus_follows_mouse yes
 
 ####### KEYBINDS #######
 
-set $terminal gnome-terminal
+set $terminal kitty
 set $shutdown shutdown now
 set $reboot reboot
 set $exit i3-msg exit
@@ -146,11 +146,13 @@ bindsym $mod1+z exec ~/.config/i3/prompt "Exit i3?" "$exit"
 bindsym $mod1+Shift+z exec ~/.config/i3/prompt "Reboot computer?" "$reboot"
 
 # Audio Controls
-bindsym XF86AudioPlay exec playerctl -p spotify play-pause
-bindsym $mod1+XF86AudioPlay exec playerctl -p spotify previous
-bindsym $mod1+XF86AudioMute exec playerctl -p spotify next
+set $spotify ncspot
 
-bindsym $mod1+Shift+XF86AudioPlay exec spotify
+bindsym XF86AudioPlay exec playerctl -p $spotify play-pause
+bindsym $mod1+XF86AudioPlay exec playerctl -p $spotify previous
+bindsym $mod1+XF86AudioMute exec playerctl -p $spotify next
+
+bindsym $mod1+Shift+XF86AudioPlay exec $terminal -e $spotify
 #bindsym $mod1+Shift+XF86AudioPlay exec rhythmbox
 #; for_window [class="Rhythmbox"] move to workspace $ws10
 
@@ -160,8 +162,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%
 bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle-mute
 
 # Music Volume
-bindsym $mod1+XF86AudioRaiseVolume exec playerctl -p spotify volume 0.05+
-bindsym $mod1+XF86AudioLowerVolume exec playerctl -p spotify volume 0.05-
+bindsym $mod1+XF86AudioRaiseVolume exec playerctl -p $spotify volume 0.05+
+bindsym $mod1+XF86AudioLowerVolume exec playerctl -p $spotify volume 0.05-
 
 # Firefox Volume
 bindsym $mod2+XF86AudioRaiseVolume exec playerctl -p plasma-browser-integration volume 0.05+
@@ -247,7 +249,7 @@ client.background       #232828
 
 
 ####### Gaps Integration #######
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 2
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences$"] floating enable
@@ -289,6 +291,7 @@ exec --no-startup-id xdotool key --clearmodifiers Num_Lock
 #exec --no-startup-id compton --backend glx --vsync opengl-swc
 
 #Start programs on launch
+exec_always picom
 exec syncthing-gtk -m
 exec kdeconnect-indicator
 exec keepassxc
