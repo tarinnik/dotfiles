@@ -1,0 +1,12 @@
+# General
+ignore-empty-password
+daemonize
+show-failed-attempts
+
+# Appearance
+image=~/Pictures/lock.jpg
+scaling=fill
+bs-hl-color=fc4949
+caps-lock-bs-hl-color=fca249
+caps-lock-key-hl-color=fca249
+indicator-radius=100

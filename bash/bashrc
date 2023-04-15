@@ -1,0 +1,18 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+VISUAL=/usr/bin/vim
+EDITOR=$VISUAL
+
+alias ls="ls --color=auto"
+alias grep="grep --color=auto"
+
+# Terminal prompt
+YELLOW="\[$(tput setaf 11)\]"
+CYAN="\[$(tput setaf 14)\]"
+RESET="\[$(tput sgr0)\]"
+PS1="[${YELLOW}\u${RESET} ${CYAN}\w${RESET}]\$ "

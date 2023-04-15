@@ -1,0 +1,10 @@
+#
+# ~/.bash_profile
+#
+
+# Autostart hyprland on login in tty1
+if [ -z "${Display}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+    exec Hyprland
+fi
+
+[[ -f ~/.bashrc ]] && . ~/.bashrc
