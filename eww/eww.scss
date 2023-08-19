@@ -1,0 +1,50 @@
+$background: #09071e;
+$active-background: #272b35;
+$padding: 20px;
+$small-padding: 10px;
+
+* {
+    all: unset;
+    font-family: "JetBrainsMono Nerd Font Mono";
+    color: #ffffff;
+}
+
+.network, .cpu, .ram, .time {
+    padding-right: 20px;
+}
+
+.pad-left {
+    padding-left: 20px;
+}
+
+.small-pad-left {
+    padding-left: $small-padding;
+}
+
+.small-pad-right {
+    padding-right: $small-padding;
+}
+
+.ncspot {
+    border: 2px solid #5c5a68;
+    border-radius: 20px;
+    margin-left: 20px;
+}
+
+.workspace, .active-workspace {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.workspace {
+    background: $background;
+ }
+
+ .active-workspace {
+    background: $active-background;
+    border-radius: 10px;
+ }
+
+.bar {
+    background: $background;
+}

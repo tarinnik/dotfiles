@@ -12,4 +12,4 @@ subprocess.run(["wget", download_url])
 subprocess.run(["chmod", "775", file_name])
 
 crdir = os.getcwd()
-os.rename(f"{crdir}/{file_name}", "/home/thomas/programs/joplin")
+os.rename(f"{crdir}/{file_name}", "/home/tk/bin/joplin")

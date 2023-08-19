@@ -1,0 +1,129 @@
+(defvar gib {1024 * 1024 * 1024})
+
+(defpoll time :interval "1s"
+  `date '+%d %b %H:%M:%S'`)
+
+(defpoll master_volume :interval "1s" :initial 0
+  `wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -d' ' -f2`)
+
+(deflisten ncspot_volume :initial 0
+  `playerctl --follow -p ncspot volume`)
+
+(deflisten ncspot_title :initial ""
+  `playerctl --follow -p ncspot metadata title`)
+
+(deflisten ncspot_artist :initial ""
+  `playerctl --follow -p ncspot metadata artist`)
+
+(defpoll ncspot_position :interval "1s" :initial 0
+  `playerctl -p ncspot position`)
+
+(deflisten ncspot_length :initial 0
+  `playerctl --follow -p ncspot metadata mpris:length`)
+
+(deflisten primary_active :initial 1
+  `~/.config/eww/scripts/stream_active_workspace.sh 0`)
+
+(deflisten secondary_active :initial 2
+  `~/.config/eww/scripts/stream_active_workspace.sh 1`)
+
+(deflisten primary_workspaces :initial "[]"
+  `~/.config/eww/scripts/stream_workspaces.sh HDMI-A-1`)
+
+(deflisten secondary_workspaces :initial "[]"
+  `~/.config/eww/scripts/stream_workspaces.sh DVI-D-1`)
+
+(defwidget ncspot []
+  (box :class "ncspot" :orientation "h" :space-evenly false :halign "start" :visible {ncspot_length != 0}
+    (label :text " ${round(ncspot_volume * 100, 0)}%" :class "ncspot-volume small-pad-left")
+    (label :text "${ncspot_title} " :class "ncspot-title pad-left" :limit-width 20)
+    (label :text "• ")
+    (label :text "${ncspot_artist}" :class "ncspot-artist" :limit-width 20)
+    (label :text "${ncspot_position < 30 ? round(ncspot_position / 60 - 0.5, 0) * -1 : round(ncspot_position / 60 - 0.5, 0)}" :class "ncspot-minutes pad-left")
+    (label :text ":")
+    (label :text "${round(ncspot_position % 60, 0) < 10 ? '0' : ''}")
+    (label :text "${round(ncspot_position % 60, 0)} " :class "ncspot-seconds")
+    (label :text "/ ")
+    (label :text "${round(ncspot_length / 60000000 - 0.5, 0)}" :class "ncspot-minutes-length")
+    (label :text ":")
+    (label :text "${round(ncspot_length / 1000000 % 60, 0) < 10 ? '0' : ''}")
+    (label :text "${round(ncspot_length / 1000000 % 60, 0)}" :class "ncspot-seconds-length small-pad-right")
+  )
+)
+
+
+; Left widgets
+(defwidget left []
+  (box :class "bar-left" :orientation "h" :space-evenly false :halign "start"
+    (label :text " ${round(master_volume * 100, 0)}%" :class "master-volume pad-left")
+    (ncspot)
+    (label :text "${replace(ncspot_position / 60, '\..*$', '')}")
+  )
+)
+
+; Centre widgets
+(defwidget centre [monitor]
+  (box :class "bar-centre" :orientation "h" :space-evenly true :halign "center"
+    (for workspace in {monitor == "primary" ? primary_workspaces : secondary_workspaces}
+      (button :width "10"
+              :onclick "hyprctl dispatch workspace ${workspace}"
+              :class {
+                monitor == "primary" ?
+                (primary_active == workspace ? "active-workspace" : "workspace") :
+                (secondary_active == workspace ? "active-workspace" : "workspace")
+              }
+        (label :text workspace)))
+    ; For some reason the active variables doesn't work unless its displayed somewhere
+    (label :text "${primary_active}"
+           :visible false)
+    (label :text "${secondary_active}"
+           :visible false)))
+
+; Right widgets
+(defwidget right []
+  (box :class "bar-right"
+       :orientation "h"
+       :space-evenly false
+       :halign "end"
+    ; For some reason it's showing double the actual speed, so only times by 4 to get Mbps
+    (label :text " ${round(EWW_NET.enp3s0.NET_DOWN / 1000000 * 4, 2)} | ${round(EWW_NET.enp3s0.NET_UP / 1000000 * 4, 2)} "
+           :class "network")
+    (label :text " ${round(EWW_CPU.avg, 0)}%"
+           :class "cpu")
+    (label :text "${round(EWW_RAM.used_mem / gib, 2)} / ${round(EWW_RAM.total_mem / gib, 2)}"
+           :class "ram")
+    (label :text time
+           :class "time")
+  )
+)
+
+; Bar widget
+(defwidget bar [monitor]
+  (centerbox :orientation "h"
+             :class "bar"
+    (left)
+    (centre :monitor monitor)
+    (right)))
+
+; Bar windows for the primary and secondary monitors
+(defwindow bar_primary
+  :class "bar-primary"
+  :monitor 0
+  :geometry (geometry :x "10px"
+                      :y "10px"
+                      :width "2540"
+                      :height "30px"
+                      :anchor "top center")
+  :exclusive true
+  (bar :monitor "primary"))
+
+(defwindow bar_secondary
+  :class "bar-secondary"
+  :monitor 1
+  :geometry (geometry :x "10px"
+                      :y "10px"
+                      :width "1900"
+                      :height "30px"
+                      :anchor "top center")
+  :exclusive true
+  (bar :monitor "secondary"))

@@ -1,67 +1,57 @@
 # Dotfiles
 
-## Installation
+## Hyprland
 
-### Polybar
+### Binds
 
-#### Dependencies
-
-- polybar
-
-#### Installation
-
-- install polybar folder at ~/.config/
-
-### i3
-
-#### Dependencies
-
-- i3-gaps
-- i3lock
-- feh: wallpaper
-- scrot: screenshot
-- xrandr: set monitors
-- arandr: gui to generate xrandr command
-- xdotool: enable numlock
-- playerctl: music control
-- dmenu: program launch, prompts
-- [Font Awesome](https://fontawesome.com/v4.7.0/get-started/)
-- font-manager: to install the fonts
-- alsamixer
-
-#### Things to edit
-
-- $terminal variable
-- $m1 and $m2 monitor variables
-- start programs on launch
-- xrandr command
-
-#### Installation
-
-- install the fonts with font-manager
-- place font awesome.ttf in ~/.fonts/
-- install i3 folder at ~/.config/
-- install polybar folder in ~/.config/
-
-### Joplin
-
-#### Dependenices
-
-- python3
-- curl
-- wget
-
-#### Installation
-
-- make a ~/programs/ folder
-- change absolute paths if necessary
-
-### youtube-dl
-
-#### Dependencies
-
-- youtube-dl
-
-#### Installation
-
-- place youtube-dl folder at ~/.config/
+| Key Combo | Action |
+|---------- |--------|
+| $mod+Shift+q | Close window |
+| $mod+x | Lock |
+| $mod+Shift+x | Shutdown |
+| $mod+z | Exit hyprland |
+| $mod+Shift+z | Reboot |
+| $mod+Shift+Enter | Open program |
+| $mod+Enter | Open terminal |
+| $mod+w | Open Firefox |
+| $mod+Shift+Play | Open ncspot |
+| $mod+h | Move focus left |
+| $mod+j | Move focus down |
+| $mod+k | Move focus up |
+| $mod+l | Move focus right |
+| $mod+Shift+h | Move window left |
+| $mod+Shift+j | Move window down |
+| $mod+Shift+k | Move window up |
+| $mod+Shift+l | Move window right |
+| $mod+1 | Move to workspace 1 |
+| $mod+2 | Move to workspace 2 |
+| $mod+3 | Move to workspace 3 |
+| $mod+4 | Move to workspace 4 |
+| $mod+5 | Move to workspace 5 |
+| $mod+6 | Move to workspace 6 |
+| $mod+7 | Move to workspace 7 |
+| $mod+8 | Move to workspace 8 |
+| $mod+9 | Move to workspace 9 |
+| $mod+10 | Move to workspace 10 |
+| $mod+Shift+1 | Move window to workspace 1 |
+| $mod+Shift+2 | Move window to workspace 2 |
+| $mod+Shift+3 | Move window to workspace 3 |
+| $mod+Shift+4 | Move window to workspace 4 |
+| $mod+Shift+5 | Move window to workspace 5 |
+| $mod+Shift+6 | Move window to workspace 6 |
+| $mod+Shift+7 | Move window to workspace 7 |
+| $mod+Shift+8 | Move window to workspace 8 |
+| $mod+Shift+9 | Move window to workspace 9 |
+| $mod+Shift+10 | Move window to workspace 10 |
+| $mod+f | Fullscreen but keep the bar |
+| $mod+Shift+f | Fullscreen |
+| $mod+Space | Toggle split |
+| $mod+Shift+Space | Toggle floating |
+| LowerVolume | Lower master volume |
+| RaiseVolume | Raise master volume |
+| Mute | Mute master volume |
+| Play | Play ncspot |
+| $mod+LowerVolume | Lower ncspot volume |
+| $mod+RaiseVolume | Raise ncspot volume |
+| $mod+Mute | ncspot next song |
+| $mod+Play | ncspot previous song |
