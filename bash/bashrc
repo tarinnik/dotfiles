@@ -5,11 +5,16 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+
 VISUAL=/usr/bin/vim
 EDITOR=$VISUAL
 
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
+alias android-studio="~/bin/android-studio/bin/studio.sh"
+alias android-studio-beta="~/bin/android-studio-beta/bin/studio.sh"
+alias vh="vim ~/.config/hypr/hyprland.conf"
 
 # Terminal prompt
 YELLOW="\[$(tput setaf 11)\]"

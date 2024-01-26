@@ -28,10 +28,10 @@
   `~/.config/eww/scripts/stream_active_workspace.sh 1`)
 
 (deflisten primary_workspaces :initial "[]"
-  `~/.config/eww/scripts/stream_workspaces.sh HDMI-A-1`)
+  `~/.config/eww/scripts/stream_workspaces.sh DP-1`)
 
 (deflisten secondary_workspaces :initial "[]"
-  `~/.config/eww/scripts/stream_workspaces.sh DVI-D-1`)
+  `~/.config/eww/scripts/stream_workspaces.sh HDMI-A-1`)
 
 (defwidget ncspot []
   (box :class "ncspot" :orientation "h" :space-evenly false :halign "start" :visible {ncspot_length != 0}
@@ -86,9 +86,9 @@
        :space-evenly false
        :halign "end"
     ; For some reason it's showing double the actual speed, so only times by 4 to get Mbps
-    (label :text " ${round(EWW_NET.enp3s0.NET_DOWN / 1000000 * 4, 2)} | ${round(EWW_NET.enp3s0.NET_UP / 1000000 * 4, 2)} "
+    (label :text "  ${round(EWW_NET.enp14s0.NET_DOWN / 1000000 * 4, 2)} | ${round(EWW_NET.enp14s0.NET_UP / 1000000 * 4, 2)} "
            :class "network")
-    (label :text " ${round(EWW_CPU.avg, 0)}%"
+    (label :text "  ${round(EWW_CPU.avg, 0)}%"
            :class "cpu")
     (label :text "${round(EWW_RAM.used_mem / gib, 2)} / ${round(EWW_RAM.total_mem / gib, 2)}"
            :class "ram")
@@ -111,7 +111,7 @@
   :monitor 0
   :geometry (geometry :x "10px"
                       :y "10px"
-                      :width "2540"
+                      :width "3420"
                       :height "30px"
                       :anchor "top center")
   :exclusive true
@@ -122,7 +122,7 @@
   :monitor 1
   :geometry (geometry :x "10px"
                       :y "10px"
-                      :width "1900"
+                      :width "2540"
                       :height "30px"
                       :anchor "top center")
   :exclusive true

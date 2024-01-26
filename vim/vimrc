@@ -17,6 +17,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
 "Plug 'bling/vim-bufferline'
 Plug 'ajh17/VimCompletesMe'
+Plug 'elkowar/yuck.vim'
 
 call plug#end()
 

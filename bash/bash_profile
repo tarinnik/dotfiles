@@ -1,6 +1,7 @@
 #
 # ~/.bash_profile
 #
+export PATH=/home/tk/bin:$PATH
 
 # Autostart hyprland on login in tty1
 if [ -z "${Display}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
