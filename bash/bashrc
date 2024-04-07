@@ -7,7 +7,7 @@
 
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
-VISUAL=/usr/bin/vim
+VISUAL=/usr/bin/nvim
 EDITOR=$VISUAL
 
 alias ls="ls --color=auto"
@@ -15,9 +15,15 @@ alias grep="grep --color=auto"
 alias android-studio="~/bin/android-studio/bin/studio.sh"
 alias android-studio-beta="~/bin/android-studio-beta/bin/studio.sh"
 alias vh="vim ~/.config/hypr/hyprland.conf"
+alias vim="nvim"
 
 # Terminal prompt
 YELLOW="\[$(tput setaf 11)\]"
 CYAN="\[$(tput setaf 14)\]"
 RESET="\[$(tput sgr0)\]"
 PS1="[${YELLOW}\u${RESET} ${CYAN}\w${RESET}]\$ "
+
+set -o vi
+
+eval "$(zoxide init bash)"
+alias cd="z"
