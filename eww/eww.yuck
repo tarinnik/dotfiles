@@ -86,9 +86,9 @@
        :space-evenly false
        :halign "end"
     ; For some reason it's showing double the actual speed, so only times by 4 to get Mbps
-    (label :text "  ${round(EWW_NET.enp14s0.NET_DOWN / 1000000 * 4, 2)} | ${round(EWW_NET.enp14s0.NET_UP / 1000000 * 4, 2)} "
+    (label :text " ${round(EWW_NET.enp14s0.NET_DOWN / 1000000 * 4, 2)} | ${round(EWW_NET.enp14s0.NET_UP / 1000000 * 4, 2)} "
            :class "network")
-    (label :text "  ${round(EWW_CPU.avg, 0)}%"
+    (label :text " ${round(EWW_CPU.avg, 0)}%"
            :class "cpu")
     (label :text "${round(EWW_RAM.used_mem / gib, 2)} / ${round(EWW_RAM.total_mem / gib, 2)}"
            :class "ram")
